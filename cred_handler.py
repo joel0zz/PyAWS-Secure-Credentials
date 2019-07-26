@@ -3,11 +3,18 @@ import json
 import base64
 
 
-def get_auth(bucket_name, object_name):
+def get_api_key(bucket_name, object_name, region):
     encrypted_obj = get_obj_from_s3(bucket_name, object_name)
-    secret = decrypt_object(encrypted_obj)
-    auth_token = secret['apikey']
-    return auth_token
+    secret = decrypt_object(encrypted_obj, region)
+    api_key = secret['apikey']
+    return api_key
+
+
+def get_credentials(bucket_name, object_name, region):
+    encrypted_obj = get_obj_from_s3(bucket_name, object_name)
+    secret = decrypt_object(encrypted_obj, region)
+    user, pwd = secret['user'], secret['pwd']
+    return user, pwd
 
 
 def get_obj_from_s3(bucket, file):
@@ -17,8 +24,8 @@ def get_obj_from_s3(bucket, file):
     return response
 
 
-def decrypt_object(obj):
-    client = boto3.client('kms', region_name='ap-southeast-2')
+def decrypt_object(obj, region):
+    client = boto3.client('kms', region_name=region)
     binary_data = base64.b64decode(obj)
     meta = client.decrypt(CiphertextBlob=binary_data)
     plaintext = meta[u'Plaintext']
