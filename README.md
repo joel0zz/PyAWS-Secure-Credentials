@@ -11,3 +11,7 @@ Credentials:
 API Key:
 {'apikey': apikey}
 
+# Installation
+
+pip install git+ssh://git@github.com/joel0zz/aws-cred-handler.git
+
