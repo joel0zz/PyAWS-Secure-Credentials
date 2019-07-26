@@ -15,3 +15,14 @@ API Key:
 
 pip install git+ssh://git@github.com/joel0zz/aws-cred-handler.git
 
+# Usage
+
+import cred_handler
+
+Retrieve API Key:
+cred_handler.get_api_key(bukcet_name, object_name, region)
+
+Retrieve User/Pwd:
+cred_handler.get_credentials(bucket_name, object_name, region)
+
+
