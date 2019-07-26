@@ -1,4 +1,4 @@
-# aws-cred-handler
+# PyAWS Secure Credentials
 
 This script will handle retrieving an encrypted(KMS) object from S3 & de-crypting it. This should be used as a secure way to handle
 credentials/api keys that need to be used inside scripts.
