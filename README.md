@@ -13,7 +13,7 @@ API Key:
 
 # Installation
 
-pip install git+ssh://git@github.com/joel0zz/aws-cred-handler.git
+pip install git+https://git@github.com/joel0zz/aws-cred-handler.git
 
 # Usage
 
